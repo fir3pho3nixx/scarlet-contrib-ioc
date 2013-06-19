@@ -1,7 +1,7 @@
 {
   "name": "scarlet-contrib-ioc",
   "description": "A Javascript IoC container",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "author": "fir3pho3nixx <fir3pho3nixx@gmail.com>",
   "repository": {
     "type": "git",
@@ -17,6 +17,7 @@
   "devDependencies": {
     "mocha": "*",
     "should": "*",
+    "prompt": "~0.2.9",
     "grunt": "~0.4.1",
     "grunt-contrib-jshint": "~0.4.3",
     "grunt-contrib-watch": "~0.4.0",
@@ -24,9 +25,9 @@
   },
   "browserDependencies": {},
   "keywords": [
-    "scarlet", 
+    "scarlet",
     "plugin",
-    "plugin-contrib", 
+    "plugin-contrib",
     "plugin-contrib-ioc"
   ],
   "engines": {
