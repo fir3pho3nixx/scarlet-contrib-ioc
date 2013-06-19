@@ -25,10 +25,12 @@
   },
   "browserDependencies": {},
   "keywords": [
+    "ioc",
     "scarlet",
-    "plugin",
-    "plugin-contrib",
-    "plugin-contrib-ioc"
+    "scarlet-plugin",
+    "dependency",
+    "injection",
+    "solid"
   ],
   "engines": {
     "node": ">= 0.2.0"
