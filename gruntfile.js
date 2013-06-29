@@ -56,8 +56,8 @@ module.exports = function(grunt) {
     prompt.start();
 
     prompt.get(["password"], function(err, result){
-        //var url = "http://www.scarletjs.com/release/bump?project={0}&version={1}&auth={2}"
-        var url = "http://localhost:3001/release/bump?project={0}&version={1}&auth={2}"
+        var url = "http://www.scarletjs.com/release/bump?project={0}&version={1}&auth={2}"
+        //var url = "http://localhost:3001/release/bump?project={0}&version={1}&auth={2}"
         var req = http.get(url.format(project, version, result.password), function(res) {
         console.log("Scarletj.scom: " + res.statusCode);
         console.log("Scarletjs.com: " + JSON.stringify(res.headers));

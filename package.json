@@ -2,7 +2,10 @@
   "name": "scarlet-contrib-ioc",
   "description": "A Javascript IoC container",
   "version": "0.0.8",
-  "author": "fir3pho3nixx <fir3pho3nixx@gmail.com>",
+  "author": {
+    "name": "fir3pho3nixx",
+    "email": "fir3pho3nixx@gmail.com"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/fir3pho3nixx/scarlet-contrib-ioc.git"
@@ -43,5 +46,12 @@
   "scripts": {
     "test": "./node_modules/mocha/bin/mocha tests/* --reporter spec"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "readme": "scarlet\n=======\n\nA Javascript interceptor\n\n#Installation\n\n    npm install scarlet\n    \n#Getting Started\n\n##Register An Interceptor\n\n    var Scarlet = require(\"scarlet\");\n  \tScarlet.register(new myInterceptor()).forObject(objectToIntercept);\n    \nRegistering an interceptor injects an interceptor between every method on an object.  Now whenever the \"objectToIntercept\" is instantiated all methods will be intercepted:\n\n    var myInterceptedObject = new objecToIntercept();\n    myInterceptedObject.dostuff(); //the method call will make a call to the interceptor\n\n##Restore An Object Without An Interceptor\n\nIn certain cases you may want to remove the interceptor and reset the object back to how it was before interception.\n\n    Scarlet.reset(); //Resets all registered objects\n",
+  "readmeFilename": "README.md",
+  "bugs": {
+    "url": "https://github.com/fir3pho3nixx/scarlet-contrib-ioc/issues"
+  },
+  "_id": "scarlet-contrib-ioc@0.0.8",
+  "_from": "scarlet-contrib-ioc@0.0.x"
 }
