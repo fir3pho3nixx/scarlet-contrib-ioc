@@ -70,9 +70,21 @@ describe("Given we are using scarlet with IoC", function(){
 		.register("anyDependencyC", AnyDependencyC)
 		.register("anyObject", AnyObject);
 
-	describe("When resolving a dependency", function(){
+	describe("When resolving a dependency using a key", function(){
 
-		var anyObject = $container.resolveForKey("anyObject");
+		var anyObject = $container.resolve("anyObject");
+
+		it("Then should be able to resolve it through the container", function(){
+
+			anyObject.method();
+
+		});
+
+	});
+
+	describe("When resolving a dependency using a type", function(){
+
+		var anyObject = $container.resolve(AnyObject);
 
 		it("Then should be able to resolve it through the container", function(){
 
@@ -92,7 +104,7 @@ describe("Given we are using scarlet with IoC", function(){
 
 		var anyObject = $container
 			.interceptWith(interceptor)
-			.resolveForKey("anyObject");
+			.resolve("anyObject");
 
 		it("Then should be able to resolve it through the container", function(){
 
