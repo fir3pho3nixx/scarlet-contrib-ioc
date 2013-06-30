@@ -4,7 +4,7 @@ var i = require("util").inspect;
 var util = require("util");
 var assert = require("assert");
 
-var $scarlet = require("scarlet");
+var $scarlet = new (require("scarlet"))(["../lib"]);
 
 describe("Given we are using scarlet with IoC", function(){
 
@@ -62,8 +62,6 @@ describe("Given we are using scarlet with IoC", function(){
 		};
 	}
 
-	$scarlet.loadPlugin("../lib");
-	
 	$container = $scarlet.plugins.ioc
 		.register("anyDependencyA", AnyDependencyA)
 		.register("anyDependencyB", AnyDependencyB)
