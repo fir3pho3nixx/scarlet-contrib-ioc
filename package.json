@@ -1,7 +1,7 @@
 {
   "name": "scarlet-contrib-ioc",
   "description": "A Javascript IoC container",
-  "version": "0.0.11",
+  "version": "0.0.12",
   "author": {
     "name": "fir3pho3nixx",
     "email": "fir3pho3nixx@gmail.com"
