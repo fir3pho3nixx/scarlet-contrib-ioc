@@ -75,11 +75,6 @@ describe("Given we are using a container", function() {
 		var installer = require("../lib/index");
 		var container = installer($scarlet).initialize();
 
-		container.register("anyDependencyA", $dummies.AnyDependencyA);
-		container.register("anyDependencyB", $dummies.AnyDependencyB);
-		container.register("anyDependencyC", $dummies.AnyDependencyC);
-		container.register("anyObject", $dummies.AnyObject);
-
 		it("Then it should be able to find them again", function() {
 
 			var instance = container.find("anyObject");
@@ -137,8 +132,6 @@ describe("Given we are using a container", function() {
 });
 
 describe("Given we are using scarlet with IoC", function() {
-
-	beforeEach(function() {});
 
 	describe("When resolving a dependency using a key", function() {
 
