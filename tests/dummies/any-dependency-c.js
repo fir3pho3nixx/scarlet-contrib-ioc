@@ -5,8 +5,9 @@ function AnyDependencyC(anyDependencyB) {
 	var self = this;
 
 	self.method = function() {
-		l("AnyDependencyC::method()");
-		assert(anyDependencyB, "AnyObject::anyDependencyB == null");
+		
+		$assert(anyDependencyB, "AnyObject::anyDependencyB == null");
+
 		anyDependencyB.method();
 	};
 

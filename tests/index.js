@@ -48,10 +48,10 @@ describe("Given we are using a container", function() {
 
 		});
 
-		it("Then it should initialize", function() {
+		it("Then it have an initialize", function() {
 
 			var container = $installer($scarlet);
-			container.initialize();
+			$assert(container.initialize, "container.initialize is not defined");
 
 		});
 
@@ -59,8 +59,7 @@ describe("Given we are using a container", function() {
 
 	describe("When registering components", function() {
 
-		var installer = require("../lib/index");
-		var container = installer($scarlet).initialize();
+		var container = $installer($scarlet);
 
 		it("Then it should register a component correctly", function() {
 
@@ -72,8 +71,7 @@ describe("Given we are using a container", function() {
 
 	describe("When resolving components", function() {
 
-		var installer = require("../lib/index");
-		var container = installer($scarlet).initialize();
+		var container = $installer($scarlet);
 
 		it("Then it should be able to find them again", function() {
 
@@ -131,50 +129,28 @@ describe("Given we are using a container", function() {
 
 });
 
-describe("Given we are using scarlet with IoC", function() {
+describe("Given we are using a container with an interceptor", function() {
 
-	describe("When resolving a dependency using a key", function() {
-
-		// var anyObject = $container.resolve("anyObject");
-
-		// it("Then should be able to resolve it through the container", function(){
-
-		// 	anyObject.method();
-
-		// });
-
-	});
-
-	describe("When resolving a dependency using a type", function() {
-
-		// var anyObject = $container.resolve($dummies.AnyObject);
-
-		// it("Then should be able to resolve it through the container", function(){
-
-		// 	anyObject.method();
-
-		// });
-
-	});
+	var container = $installer($scarlet);
 
 	describe("When resolving a dependency with interceptor", function() {
 
-		// var methodCalled = false;
-		// function interceptor(invocation) {
-		// 	invocation.proceed();
-		// 	methodCalled = true;
-		// }
+		var methodCalled = false;
+		function interceptor(proceed, invocation) {
+			proceed();
+			methodCalled = true;
+		}
 
-		// var anyObject = $container
-		// 	.interceptWith(interceptor)
-		// 	.resolve("anyObject");
+		var anyObject = container
+			.intercept(interceptor)
+			.resolve("anyObject");
 
-		// it("Then should be able to resolve it through the container", function(){
+		it("Then should be able to assert that the interceptor was called", function(){
 
-		// 	anyObject.method();
-		// 	assert(methodCalled);
+			anyObject.method();
+			$assert(methodCalled);
 
-		// });
+		});
 
 	});
 

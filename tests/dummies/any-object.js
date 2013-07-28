@@ -6,9 +6,9 @@ function AnyObject(anyDependencyA, anyDependencyB, anyDependencyC) {
 
 	self.method = function() {
 
-		assert(anyDependencyA, "AnyObject::anyDependencyA == null");
-		assert(anyDependencyB, "AnyObject::anyDependencyB == null");
-		assert(anyDependencyC, "AnyObject::anyDependencyC == null");
+		$assert(anyDependencyA, "AnyObject::anyDependencyA == null");
+		$assert(anyDependencyB, "AnyObject::anyDependencyB == null");
+		$assert(anyDependencyC, "AnyObject::anyDependencyC == null");
 
 		anyDependencyA.method();
 		anyDependencyB.method();
