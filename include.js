@@ -11,5 +11,6 @@ module.exports = {
 	S: require("string"), 
 	util: require("util"),
 	assert: require("assert"),
+	Scarlet: require("scarlet"),
 	ll: function(val) { log(inspect(val)); }
 }

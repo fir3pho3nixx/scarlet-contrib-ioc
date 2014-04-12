@@ -1,26 +1,26 @@
-require("./include");
-
-var $dummies = require("./dummies");
-var $installer = require("./dummies/installer");
+var g = require("./include");
+var scarlet = new g.Scarlet();
+var dummies = require("./dummies");
+var installer = require("./dummies/installer");
 
 describe("Given we are using dummies", function(){
 
 	describe("When loading dummies", function(){
 
 		it("Then AnyDepedencyA should be a function", function(){
-			$assert(typeof($dummies.AnyDependencyA) == "function", "AnyDependencyA is not a function");
+			g.assert(typeof(dummies.AnyDependencyA) == "function", "AnyDependencyA is not a function");
 		});
 
 		it("Then AnyDepedencyB should be a function", function(){
-			$assert(typeof($dummies.AnyDependencyB) == "function", "AnyDependencyB is not a function");
+			g.assert(typeof(dummies.AnyDependencyB) == "function", "AnyDependencyB is not a function");
 		});
 
 		it("Then AnyDepedencyC should be a function", function(){
-			$assert(typeof($dummies.AnyDependencyC) == "function", "AnyDependencyC is not a function");
+			g.assert(typeof(dummies.AnyDependencyC) == "function", "AnyDependencyC is not a function");
 		});
 
 		it("Then AnyObject should be a function", function(){
-			$assert(typeof($dummies.AnyObject) == "function", "AnyObject is not a function");
+			g.assert(typeof(dummies.AnyObject) == "function", "AnyObject is not a function");
 		});
 
 	});
@@ -33,7 +33,7 @@ describe("Given we are using a container", function() {
 
 		it("Then it should not throw", function() {
 
-			$assert($installer, "installer == null");
+			g.assert(installer, "installer == null");
 
 		});
 
@@ -43,15 +43,15 @@ describe("Given we are using a container", function() {
 
 		it("Then it should not throw", function() {
 
-			var container = $installer($scarlet);
-			$assert(container, "container == null")
+			var container = installer(scarlet);
+			g.assert(container, "container == null")
 
 		});
 
 		it("Then it have an initialize", function() {
 
-			var container = $installer($scarlet);
-			$assert(container.initialize, "container.initialize is not defined");
+			var container = installer(scarlet);
+			g.assert(container.initialize, "container.initialize is not defined");
 
 		});
 
@@ -59,11 +59,11 @@ describe("Given we are using a container", function() {
 
 	describe("When registering components", function() {
 
-		var container = $installer($scarlet);
+		var container = installer(scarlet);
 
 		it("Then it should register a component correctly", function() {
 
-			container.register("anyObject", $dummies.AnyObject);
+			container.register("anyObject", dummies.AnyObject);
 
 		});
 
@@ -71,12 +71,12 @@ describe("Given we are using a container", function() {
 
 	describe("When resolving components", function() {
 
-		var container = $installer($scarlet);
+		var container = installer(scarlet);
 
 		it("Then it should be able to find them again", function() {
 
 			var instance = container.find("anyObject");
-			$assert(instance, "anyObject == null");
+			g.assert(instance, "anyObject == null");
 
 		});
 
@@ -84,7 +84,7 @@ describe("Given we are using a container", function() {
 
 			var component = container.find("anyObject");
 			var result = component.getParameterNames(component.type);
-			$assert($_.isEqual(result, ["anyDependencyA", "anyDependencyB", "anyDependencyC"]));
+			g.assert($_.isEqual(result, ["anyDependencyA", "anyDependencyB", "anyDependencyC"]));
 
 		});
 
@@ -92,7 +92,7 @@ describe("Given we are using a container", function() {
 
 			var component = container.find("anyObject");
 			var instance = component.getComponent();
-			$assert(instance, "getComponent failed");
+			g.assert(instance, "getComponent failed");
 
 		});
 
@@ -100,28 +100,28 @@ describe("Given we are using a container", function() {
 		it("Then it should be able to resolve AnyDependencyA", function(){
 
 			var instance = container.resolve("anyDependencyA");
-			$assert(instance, "anyDependencyA == null")
+			g.assert(instance, "anyDependencyA == null")
 
 		});
 
 		it("Then it should be able to resolve AnyDependencyB", function(){
 
 			var instance = container.resolve("anyDependencyB");
-			$assert(instance, "anyDependencyB == null")
+			g.assert(instance, "anyDependencyB == null")
 
 		});
 
 		it("Then it should be able to resolve AnyDependencyC", function(){
 
 			var instance = container.resolve("anyDependencyC");
-			$assert(instance, "anyDependencyC == null")
+			g.assert(instance, "anyDependencyC == null")
 
 		});
 
 		it("Then it should be able to resolve AnyObject", function(){
 
 			var instance = container.resolve("anyObject");
-			$assert(instance, "anyObject == null")
+			g.assert(instance, "anyObject == null")
 
 		});
 
@@ -131,7 +131,7 @@ describe("Given we are using a container", function() {
 
 describe("Given we are using a container with an interceptor", function() {
 
-	var container = $installer($scarlet);
+	var container = installer(scarlet);
 
 	describe("When resolving a dependency with interceptor", function() {
 
@@ -148,7 +148,7 @@ describe("Given we are using a container with an interceptor", function() {
 		it("Then should be able to assert that the interceptor was called", function(){
 
 			anyObject.method();
-			$assert(methodCalled);
+			g.assert(methodCalled);
 
 		});
 

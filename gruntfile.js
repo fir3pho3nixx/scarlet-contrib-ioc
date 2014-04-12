@@ -60,7 +60,6 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks("grunt-contrib-watch");
   grunt.loadNpmTasks("grunt-contrib-jshint");
 
-  grunt.registerTask("doc", ["mox"]);
   grunt.registerTask("test", ["spawn:test"]);
   grunt.registerTask("default", ["jshint"]);
   grunt.registerTask("deploy", ["jshint", "browserify", "release"]);
