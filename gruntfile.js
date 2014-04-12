@@ -3,7 +3,7 @@ module.exports = function(grunt) {
   grunt.initConfig({
     pkg: grunt.file.readJSON("package.json"),
     jshint: {
-      files: ["gruntfile.js", "index.js", "lib/**/*.js", "test/**/*.js"],
+      files: ["gruntfile.js", "index.js", "lib/**/*.js", "tests/**/*.js"],
       options: {
         globals: {
           console: true,
@@ -53,7 +53,6 @@ module.exports = function(grunt) {
     }
   });
 
-  grunt.loadNpmTasks("grunt-mox");
   grunt.loadNpmTasks("grunt-spawn");
   grunt.loadNpmTasks("grunt-release");
   grunt.loadNpmTasks('grunt-browserify');
