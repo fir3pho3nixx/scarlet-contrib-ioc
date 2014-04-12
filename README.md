@@ -1,26 +1,36 @@
-scarlet
-=======
+scarlet-ioc
+===========
 
-A Javascript interceptor
+A plugin for doing IoC using Scarlet.
 
-#Installation
+##Installation
 
-    npm install scarlet
-    
-#Getting Started
+    npm install scarlet-ioc
 
-##Register An Interceptor
+##Quickstart
 
-    var Scarlet = require("scarlet");
-  	Scarlet.register(new myInterceptor()).forObject(objectToIntercept);
-    
-Registering an interceptor injects an interceptor between every method on an object.  Now whenever the "objectToIntercept" is instantiated all methods will be intercepted:
+```javascript
+var Scarlet = require("scarlet");
+var scarlet = new Scarlet(["scarlet-ioc"]);
 
-    var myInterceptedObject = new objecToIntercept();
-    myInterceptedObject.dostuff(); //the method call will make a call to the interceptor
+function MyObjectA(){
+    var self = this;
+    self.anyMethod = function(){
+    	// do stuff
+    };
+}
 
-##Restore An Object Without An Interceptor
+function MyObjectB(myObjectA){
+	var self = this;
+	self.anyMethod = function(){
+		myObjectA.anyMethod();
+	};
+}
 
-In certain cases you may want to remove the interceptor and reset the object back to how it was before interception.
+scarlet.plugins.ioc
+	.register("myObjectA", MyObjectA, "singleton")
+	.register("myObjectB", MyObjectB, "transient");
 
-    Scarlet.reset(); //Resets all registered objects
+var myObjectB = scarlet.plugins.ioc.resolve("myObjectB");
+myObjectB.anyMethod();
+```
