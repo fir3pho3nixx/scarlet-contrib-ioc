@@ -10,26 +10,27 @@ A plugin for doing IoC using Scarlet.
 ##Quickstart
 
 ```javascript
-var Scarlet = require("scarlet");
-var scarlet = new Scarlet(["scarlet-ioc"]);
-
 function MyObjectA(){
-    var self = this;
-    self.anyMethod = function(){
-    	// do stuff
-    };
+	var self = this;
+	self.anyMethod = function(){
+		console.log("calling A");
+	};
 }
 
 function MyObjectB(myObjectA){
 	var self = this;
 	self.anyMethod = function(){
 		myObjectA.anyMethod();
+		console.log("calling B");
 	};
 }
 
+var Scarlet = require("scarlet");
+var scarlet = new Scarlet(["scarlet-ioc"]);
+
 scarlet.plugins.ioc
-	.register("myObjectA", MyObjectA, "singleton")
-	.register("myObjectB", MyObjectB, "transient");
+	.register("myObjectA", MyObjectA)
+	.register("myObjectB", MyObjectB);
 
 var myObjectB = scarlet.plugins.ioc.resolve("myObjectB");
 myObjectB.anyMethod();
