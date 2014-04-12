@@ -3,6 +3,8 @@ var util = require("util");
 var print = util.print;
 var inspect = util.inspect;
 
+require("string-format");
+
 module.exports = {
 	l: log,
 	p: print,
