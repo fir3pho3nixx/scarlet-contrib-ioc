@@ -2,7 +2,7 @@ var g = require("../include");
 var dummies = require("./dummies");
 var installer = require("./dummies/installer");
 
-var scarlet = new g.Scarlet(["../../lib/index"]);
+var scarlet = new g.Scarlet(["../lib/index"]);
 
 describe("Given we are using dummies", function(){
 
