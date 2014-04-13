@@ -1,5 +1,5 @@
 {
-  "name": "scarlet-ioc",
+  "name": "scarlet-contrib-ioc",
   "description": "A Javascript IoC container",
   "version": "2.0.2",
   "author": {

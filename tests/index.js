@@ -106,6 +106,18 @@ describe("Given we are using a container", function() {
 			g.assert(instance, "anyObject == null")
 		});
 
+		it("Then it should be able to manage singeltons properly", function(){
+			var firstInstance = container.resolve("anyDependencyA");
+			var secondInstance = container.resolve("anyDependencyA");
+			g.assert(firstInstance === secondInstance);
+		});
+
+		it("Then it should be able to manage transients properly", function(){
+			var firstInstance = container.resolve("anyDependencyB");
+			var secondInstance = container.resolve("anyDependencyB");
+			g.assert(firstInstance !== secondInstance);
+		});
+
 	});
 
 });
