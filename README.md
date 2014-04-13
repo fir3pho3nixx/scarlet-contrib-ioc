@@ -35,3 +35,4 @@ scarlet.plugins.ioc
 var myObjectB = scarlet.plugins.ioc.resolve("myObjectB");
 myObjectB.anyMethod();
 ```
+
